@@ -1,6 +1,6 @@
-from extract import Extract
-from transform import Transform
-from load import Load
+from scripts.extract import Extract
+from scripts.transform import Transform
+from scripts.load import Load
 
 from sqlalchemy import create_engine, text
 
@@ -10,7 +10,8 @@ def main():
     '''
     extract = Extract()
     df = extract.read_data('data/transaction-data.csv')
-    print("**DATA EXTRACTION COMPLETED**")
+    print("** STARTED ETL PIPELINE **")
+    print("DATA EXTRACTION COMPLETED")
     '''
     Transform the data
     '''
@@ -30,7 +31,7 @@ def main():
     # Cast data types
     df = transform.create_columns(df)
     # the processed dataframe
-    print("**DATA TRANSFROMATION DONE**")
+    print("DATA TRANSFROMATION DONE")
     '''
     Load data to the Database
     '''
@@ -38,7 +39,7 @@ def main():
         load = Load()
         sales_df, customer_df, product_df, transaction_df, country_df, date_df = load.create_tables(df)
         load.insert_tables(sales_df, customer_df, product_df, transaction_df, country_df, date_df)
-        print("**LOAD TO DB FINISHED**")
+        print("LOAD TO DB FINISHED")
 
     except Exception as e:
         print("Error has occured during DB Ingestion: ", e)
