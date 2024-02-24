@@ -4,7 +4,7 @@ import pandas as pd
 class Transform:
     '''
     To transform and clean the raw data.
-    Functions for transsformations
+    Functions for transformations
     '''
     @staticmethod
     def clean_columns(df):
