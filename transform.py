@@ -88,41 +88,7 @@ class Transform:
         return df
     
     # data type catsing 
-    @staticmethod
-    def cast_types(df):
-        '''
-        Converts specific columns to the desired data types in a DataFrame.
-        Parameters:
-            df: Input DataFrame
-        Returns:
-            df: DataFrame with specified columns converted to the desired data types.
-        '''
-        df = df.astype({"customer_id": int, "transaction_id": int})
-        df["date"]= pd.to_datetime(df["date"], format="%m/%d/%Y")
-        log("Type casted column names to necessary data types")
-        return df
     
-    # creating new columns using existing data
-    @staticmethod
-    def create_columns(df):
-        '''
-        Create new columns and convert specific columns to the desired data types.
-        Parameters:
-            df: Input DataFrame
-        Returns:
-            df: DataFrame with specified columns converted to the desired data types and date-related information extracted.
-        '''
-        df["year"] = df['date'].dt.year
-        df["day"] = df['date'].dt.day
-        df["day_name"] = df['date'].dt.day_name()
-        df['month'] = df['date'].dt.month
-        df['quarter'] = df['date'].dt.quarter
-        df['week'] = df['date'].dt.isocalendar().week
-
-        country_id = df["country_id"] = df["country"].apply(lambda x: x[:3].upper() + str(len(x)))
-        df["country_id"] = country_id
-        log("Created new columns and type casted necessary data types")
-        return df
 
 
 
