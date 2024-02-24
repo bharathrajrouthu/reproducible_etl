@@ -1,7 +1,7 @@
 import sys
 sys.path.append("..")
 
-from transform import *
+from scripts.transform import *
 import pandas as pd
 from pandas.testing import assert_frame_equal
 
