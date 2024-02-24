@@ -1,0 +1,47 @@
+22:19:16-Feb-23-2024: Read data operation completed successfully
+22:21:40-Feb-23-2024: Read data operation completed successfully
+22:21:42-Feb-23-2024: Returning the data frame
+00:22:18-Feb-24-2024: Checking the shape of DataFrame
+00:22:24-Feb-24-2024: Checking the shape of DataFrame
+00:22:33-Feb-24-2024: Checking the shape of DataFrame
+00:22:42-Feb-24-2024: Checking the shape of DataFrame
+00:36:11-Feb-24-2024: Checking the shape of DataFrame
+00:36:21-Feb-24-2024: Checking the shape of DataFrame
+00:42:44-Feb-24-2024: Checking the shape of DataFrame
+00:43:28-Feb-24-2024: Checking the shape of DataFrame
+00:43:48-Feb-24-2024: Checking the shape of DataFrame
+00:44:01-Feb-24-2024: Checking the shape of DataFrame
+00:45:46-Feb-24-2024: Checking the shape of DataFrame
+00:46:00-Feb-24-2024: Checking the shape of DataFrame
+00:48:01-Feb-24-2024: Checking the shape of DataFrame
+00:48:26-Feb-24-2024: Checking the shape of DataFrame
+00:50:51-Feb-24-2024: Checking the shape of DataFrame
+00:51:27-Feb-24-2024: Checking the shape of DataFrame
+00:53:00-Feb-24-2024: Checking the shape of DataFrame
+00:55:48-Feb-24-2024: Checking the shape of DataFrame
+00:56:06-Feb-24-2024: Checking the shape of DataFrame
+00:58:15-Feb-24-2024: Checking the shape of DataFrame
+00:59:12-Feb-24-2024: Checking the shape of DataFrame
+01:01:19-Feb-24-2024: Checking the shape of DataFrame
+01:02:16-Feb-24-2024: Checking the shape of DataFrame
+01:04:33-Feb-24-2024: Checking the shape of DataFrame
+01:06:30-Feb-24-2024: Checking the shape of DataFrame
+01:10:01-Feb-24-2024: Type casted column names to necessary data types
+01:10:01-Feb-24-2024: Cleaned column names
+01:10:01-Feb-24-2024: Created new columns and type casted necessary data types
+01:10:01-Feb-24-2024: Removed the duplicate rows
+01:10:01-Feb-24-2024: Removed the duplicate rows
+01:10:01-Feb-24-2024: Removed empty orders
+01:10:01-Feb-24-2024: Removed the missing values
+01:10:01-Feb-24-2024: Standardized the column names
+01:31:55-Feb-24-2024: Read data operation completed successfully
+01:31:55-Feb-24-2024: Returning the data frame
+01:31:55-Feb-24-2024: Cleaned column names
+01:31:55-Feb-24-2024: Standardized the column names
+01:31:55-Feb-24-2024: Removed the duplicate rows
+01:31:55-Feb-24-2024: Removed the missing values
+01:31:55-Feb-24-2024: Removed empty orders
+01:31:55-Feb-24-2024: Type casted column names to necessary data types
+01:31:55-Feb-24-2024: Created new columns and type casted necessary data types
+01:31:56-Feb-24-2024: Connected to the Database
+01:32:05-Feb-24-2024: Loaded Data into DB
