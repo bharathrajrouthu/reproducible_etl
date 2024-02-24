@@ -6,7 +6,7 @@ from sqlalchemy import create_engine, text
 
 def main():
     '''
-    Extract data
+    Data Extarction
     '''
     extract = Extract()
     df = extract.read_data('data/transaction-data.csv')
@@ -44,18 +44,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-############################################################################################################
-    '''
-    Step 1: Call extract data from extract.py
-    Step 2: Call transform function from transform.py - pass data as argumnet to perform transformations
-    Step 3: Once returned df. Call load from load.py
-    '''
-
-    # data = extract_data()
-    # transform = transform_data(data)
-    '''
-    Try test connection from postgres DB
-    '''
-    # load = load_data(transform)
