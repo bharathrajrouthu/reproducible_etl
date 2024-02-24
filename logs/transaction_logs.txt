@@ -50,3 +50,19 @@
 17:48:07-Feb-24-2024: Created new columns and type casted necessary data types
 17:48:08-Feb-24-2024: Connected to the Database
 17:48:19-Feb-24-2024: Loaded Data into DB
+17:53:25-Feb-24-2024: Type casted column names to necessary data types
+17:53:25-Feb-24-2024: Cleaned column names
+17:53:25-Feb-24-2024: Created new columns and type casted necessary data types
+17:53:25-Feb-24-2024: Removed the duplicate rows
+17:53:25-Feb-24-2024: Removed the duplicate rows
+17:53:25-Feb-24-2024: Removed empty orders
+17:53:25-Feb-24-2024: Removed the missing values
+17:53:25-Feb-24-2024: Standardized the column names
+17:53:55-Feb-24-2024: Type casted column names to necessary data types
+17:53:55-Feb-24-2024: Cleaned column names
+17:53:55-Feb-24-2024: Created new columns and type casted necessary data types
+17:53:55-Feb-24-2024: Removed the duplicate rows
+17:53:55-Feb-24-2024: Removed the duplicate rows
+17:53:55-Feb-24-2024: Removed empty orders
+17:53:55-Feb-24-2024: Removed the missing values
+17:53:55-Feb-24-2024: Standardized the column names
