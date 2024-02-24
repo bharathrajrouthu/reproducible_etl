@@ -1,0 +1,20 @@
+19:41:58-Feb-24-2024: Read data operation completed successfully
+19:41:58-Feb-24-2024: Returning the data frame
+19:41:58-Feb-24-2024: Cleaned column names
+19:41:58-Feb-24-2024: Standardized the column names
+19:41:58-Feb-24-2024: Removed the duplicate rows
+19:41:58-Feb-24-2024: Removed the missing values
+19:41:58-Feb-24-2024: Removed empty orders
+19:41:58-Feb-24-2024: Type casted column names to necessary data types
+19:41:58-Feb-24-2024: Created new columns and type casted necessary data types
+19:42:15-Feb-24-2024: Read data operation completed successfully
+19:42:15-Feb-24-2024: Returning the data frame
+19:42:15-Feb-24-2024: Cleaned column names
+19:42:15-Feb-24-2024: Standardized the column names
+19:42:15-Feb-24-2024: Removed the duplicate rows
+19:42:15-Feb-24-2024: Removed the missing values
+19:42:15-Feb-24-2024: Removed empty orders
+19:42:15-Feb-24-2024: Type casted column names to necessary data types
+19:42:15-Feb-24-2024: Created new columns and type casted necessary data types
+19:42:16-Feb-24-2024: Connected to the Database
+19:42:25-Feb-24-2024: Loaded Data into DB
