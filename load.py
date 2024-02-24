@@ -3,12 +3,57 @@ from sqlalchemy import create_engine, text
 import pandas as pd
 
 class Load:
+    '''
+    Connection to DB and data insertion
+    '''
+    def create_tables(self, df):
+        '''
+        Creates databse tables.
+        Parameters:
+            self: The class instance
+            df: Input DataFrame.
+        Returns:
+            sales_dataframe: DataFrame containing sales data.
+            customer_dataframe: DataFrame containing customer data.
+            unique_product_df: DataFrame containing unique product data.
+            transaction_dataframe: DataFrame containing transaction data.
+            country_dataframe: DataFrame containing country data.
+            date_dataframe: DataFrame containing date-related data.
+        '''
+        #  A new customer dataframe
+        customer_dataframe = df[["customer_id"]].drop_duplicates().sort_values(by="customer_id")
+        customer_dataframe = customer_dataframe.reset_index(drop=True)
+        customer_dataframe["customer_key"] = customer_dataframe.index 
 
-    def __init__(self):
-        pass
-    '''
-    connection to DB and data insertion
-    '''
+        # A new product dataframe
+        product_dataframe = df[['product_id', "name", "price"]]
+        unique_product_df = product_dataframe.drop_duplicates().sort_values(by=['name', 'price']).reset_index(drop=True)
+        unique_product_df['product_key'] = unique_product_df.index
+        unique_product_df = product_dataframe.merge(unique_product_df, on=['product_id', 'name', 'price']).sort_values(by=['name', 'price']).drop_duplicates()
+
+        # A new transaction dataframe
+        transaction_dataframe = df[["transaction_id"]].drop_duplicates().sort_values(by="transaction_id")
+        transaction_dataframe = transaction_dataframe.reset_index(drop=True)
+        transaction_dataframe["transaction_key"] = transaction_dataframe.index
+
+        # # A new country dataframe
+        country_dataframe = df[["country", "country_id"] ].drop_duplicates().sort_values(by="country_id")
+        country_dataframe = country_dataframe.reset_index(drop=True)
+        country_dataframe["country_key"] = country_dataframe.index
+
+        # # A new date dataframe
+        date_dataframe = df[["date", "week", "day_name",  "day", "month", "quarter", "year"]].drop_duplicates().sort_values(by="date")
+        date_dataframe = date_dataframe.reset_index(drop=True)
+        date_dataframe["date_key"] = date_dataframe.index
+        
+        # Aggregate the results for sales dataframe
+        result = df.merge(customer_dataframe, on="customer_id")
+        result = result.merge(unique_product_df, on=["product_id", "name", "price"])
+        result = result.merge(transaction_dataframe, on="transaction_id")
+        result = result.merge(country_dataframe, on=["country_id", "country"])
+        sales_dataframe = result.merge(date_dataframe, on=["date", "week", "day_name",  "day", "month", "quarter", "year"])
+
+        return sales_dataframe, customer_dataframe, unique_product_df, transaction_dataframe, country_dataframe, date_dataframe
 
     def insert_tables(self, sales_dataframe, customer_dataframe, unique_product_df, transaction_dataframe, country_dataframe, date_dataframe):
         '''
@@ -67,85 +112,3 @@ class Load:
 
         print("**INSERTION COMPLETED")
         log("Loaded Data into DB")
-
-        '''
-        DB schema and function queries to insert into DB
-        '''
-        # try:
-            
-        #     with engine.connect() as conn:
-        #         print("**INSERTION IN PROGRESS**")
-        #         conn.execute(text("""
-        #         ALTER TABLE sales_fact 
-        #         ADD PRIMARY KEY (customer_key, transaction_key, date_key, product_key, country_key);
-        #         """))
-        #         conn.execute(text("""
-        #         ALTER TABLE sales_fact
-        #         ADD CONSTRAINT fk_customer_dim_sales_fact
-        #         FOREIGN KEY (customer_key)
-        #         REFERENCES customer_dim (customer_key);
-        #         """))
-        #         conn.execute(text("""
-        #         ALTER TABLE sales_fact
-        #         ADD CONSTRAINT fk_transaction_dim_sales_fact
-        #         FOREIGN KEY (transaction_key)
-        #         REFERENCES transaction_dim (transaction_key);
-        #         """))
-        #         conn.execute(text("""
-        #         ALTER TABLE sales_fact
-        #         ADD CONSTRAINT fk_date_dim_sales_fact
-        #         FOREIGN KEY (date_key)
-        #         REFERENCES date_dim (date_key);
-        #         """))
-        #         conn.execute(text("""
-        #         ALTER TABLE sales_fact
-        #         ADD CONSTRAINT fk_product_dim_sales_fact
-        #         FOREIGN KEY (product_key)
-        #         REFERENCES product_dim (product_key);
-        #         """))
-        #         conn.execute(text("""
-        #         ALTER TABLE sales_fact
-        #         ADD CONSTRAINT fk_country_dim_sales_fact
-        #         FOREIGN KEY (country_key)
-        #         REFERENCES country_dim (country_key);
-        #         """))
-        #     print("**ALL THE STATEMNETS EXECUTED AND INSERTION DONE**")
-        #     log("Succesfully completed data insertion into DB")
-        # except Exception as e:
-            # print(e)
-
-
-
-
-
-
-
-##########################################################################################################################################################################
-# def load_csv(self, path: str):
-#     '''
-#     Load to a csv file
-#     :param path: Path to the csv file to load data into
-#     '''
-#     self.data.to_csv(path)
-
-# def load_pickle(self, path):
-#     '''
-#     Load to an pkl file
-#     :param path: Path to the pkl file to load data into
-#     '''
-#     self.data.to_pickle(path)
-        
-
-# def load_table(df: pd.DataFrame, table_name: str, key: str, replacement_key: str):
-#     engine = create_engine("postgresql://postgres@localhost:5432/onprem_db")
-#     engine.connect()
-
-#     df_table = df[[key]].drop_duplicates().sort_values(by=key)
-#     df_table = df_table.reset_index(drop=True)
-#     df_table[replacement_key] = df_table.index
-
-#     table_name= df_table.set_index(key)
-#     dim_table_name = f"{table_name}_dim"
-#     table_name.to_sql(dim_table_name, con=engine, if_exists="replace")
-#     with engine.connect() as conn:
-#         conn.execute(text(f"ALTER TABLE {dim_table_name} ADD PRIMARY KEY ({replacement_key});"))
